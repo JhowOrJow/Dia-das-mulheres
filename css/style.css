@@ -1,0 +1,77 @@
+/* --- RESET BASE --- */
+body, html { height: 100%; margin: 0; padding: 0; overflow: hidden; font-family: 'Nunito', sans-serif; background-color: #000; }
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: flex; justify-content: center; align-items: center; overflow: hidden; transition: opacity 0.5s ease; background: rgba(0, 0, 0, 0.75); }
+#main-container { height: 100vh; width: 100vw; background-size: cover; background-position: center; position: absolute; top: 0; left: 0; }
+.container-instrucao, #hotspots-container { display: none; }
+.container-instrucao { position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 95%; max-width: 800px; }
+.caixa-dialogo { background-size: 100% 100%; background-repeat: no-repeat; width: 100%; height: 160px; display: flex; align-items: center; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); }
+#texto-instrucao { font-size: 1.1rem; font-weight: 900; margin: 0; padding: 10px 20px; border-radius: 15px; }
+.hotspot { position: absolute; transform: translate(-50%, -50%); z-index: 100; }
+
+.popped { animation: pop-out 0.4s forwards !important; pointer-events: none !important; }
+@keyframes pop-out { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; visibility: hidden; } }
+
+/* TEMA BEATRIIX */
+.tema-bea #boas-vindas { font-family: 'Luckiest Guy', cursive; text-shadow: 3px 3px 0 #000; }
+.tema-bea #niko-img { position: absolute; right: 3%; top: 50%; transform: translateY(-50%); max-width: 400px; z-index: 2001; pointer-events: none; filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.4)); }
+.tema-bea .caixa-dialogo { padding: 0 40px 0 190px; }
+.tema-bea #texto-instrucao { color: #4e342e; background: rgba(255, 246, 227, 0.8); }
+.tema-bea .hotspot { width: 140px; height: 180px; display: flex; flex-direction: column; align-items: center; }
+.tema-bea .monkey-img { width: 110px; height: 110px; background-image: url('../assets/images/macaquinho.gif'); background-size: contain; background-repeat: no-repeat; margin-bottom: -30px; z-index: 1; animation: bounceBea 2s infinite; }
+.tema-bea .balloon-img { width: 90px; height: 90px; background-image: url('../assets/images/bloon.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; z-index: 10; filter: drop-shadow(0 5px 15px rgba(255,0,0,0.3)); }
+.tema-bea .modal-content { border: 6px solid #4e342e; border-radius: 20px; background: #fff; }
+.tema-bea .final-vintage { background-color: #fdf6e3; border: 12px double #4e342e; color: #2c1b18; }
+@keyframes bounceBea { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* TEMA JENNIFER */
+.tema-jennifer .caixa-dialogo { padding: 0 60px; justify-content: center; text-align: center; }
+.tema-jennifer #texto-instrucao { color: #b03a5b; background: rgba(255, 230, 240, 0.9); border: 3px solid #ff85a1; }
+.tema-jennifer .default-dot { width: 200px; height: 200px; background-color: #000; mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'); -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; cursor: pointer; filter: drop-shadow(0 0 8px #ff85a1); animation: pulseJenn 1.5s infinite; }
+.tema-jennifer .modal-content { border: 6px solid #ff85a1; background: #f5c3c3; color: #000; }
+.tema-jennifer .final-vintage { background-color: #f5c3c3; border: 8px double #ff85a1; color: #000; }
+@keyframes pulseJenn { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+/* TEMA CIRSA */
+.tema-cirsa #boas-vindas { color: #d4af37; font-weight: 900; }
+.tema-cirsa .caixa-dialogo { background-image: none !important; background: #fff8e1; border: 4px solid #d4af37; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.tema-cirsa #texto-instrucao { color: #5d4037; background: transparent; padding: 0; }
+.tema-cirsa .bible-dot { width: 100px; height: 100px; background-image: url('../assets/images/biblia.png'); background-size: contain; background-repeat: no-repeat; background-position: center; cursor: pointer; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4)); animation: pulseBible 2.5s infinite; }
+.tema-cirsa .modal-content { border: 5px solid #d4af37; background: #fffaf0; color: #5d4037; }
+.tema-cirsa .final-vintage { background-color: #fffaf0; border: 10px double #d4af37; }
+@keyframes pulseBible { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* TEMA ISLANE */
+.tema-islane #boas-vindas { color: #ff9800; font-weight: 900; }
+.tema-islane .caixa-dialogo { background-image: none !important; background: #5d4037; border: 4px solid #ff9800; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+.tema-islane #texto-instrucao { color: #fff; background: transparent; padding: 0; }
+.tema-islane .africa-dot { width: 150px; height: 150px; background-image: url('../assets/images/africa.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; filter: drop-shadow(0 0 15px #ff9800); animation: pulseAfrica 2s infinite; }
+.tema-islane .modal-content { border: 6px solid #ff9800; background: #fff3e0; color: #5d4037; }
+.tema-islane .final-vintage { background-color: #5d4037; border: 10px double #ff9800; color: #fff; }
+@keyframes pulseAfrica { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+/* TEMA IRANI (MÃE) */
+.tema-irani #boas-vindas { color: #e91e63; font-weight: 900; }
+.tema-irani .caixa-dialogo { background-image: none !important; background: #fce4ec; border: 4px solid #e91e63; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.tema-irani #texto-instrucao { color: #880e4f; background: transparent; padding: 0; }
+.tema-irani .pan-dot {
+    width: 150px; height: 150px; /* Aumentei o tamanho */
+    background-image: url('../assets/images/panela.png'); /* Usa a sua imagem real */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: pulsePan 2s infinite ease-in-out;
+}
+.tema-irani .modal-content { border: 5px solid #e91e63; border-radius: 15px; background: #fff; color: #880e4f; }
+.tema-irani .final-vintage { background-color: #fce4ec; border: 10px double #e91e63; color: #880e4f; }
+@keyframes pulsePan { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+/* Mensagens Estilo Geral */
+#texto-final { font-size: 1.1rem; font-style: italic; white-space: pre-wrap; text-align: left; padding: 10px; line-height: 1.6; }
+
+@media (max-width: 768px) {
+    .caixa-dialogo { height: 110px; }
+    .tema-bea .caixa-dialogo { padding-left: 110px; }
+    .tema-jennifer .caixa-dialogo, .tema-cirsa .caixa-dialogo, .tema-islane .caixa-dialogo, .tema-irani .caixa-dialogo { padding: 0 40px; }
+}

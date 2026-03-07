@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homenagem Especial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="overlay">
+        <div class="text-center text-white p-4 z-index-top">
+            <h1 id="boas-vindas" class="game-font display-3 mb-4 text-uppercase">Carregando...</h1>
+            <button class="btn btn-warning btn-lg px-5 shadow-lg rounded-pill fw-bold" onclick="iniciarExperiencia()">ABRIR PRESENTE 🎁</button>
+        </div>
+    </div>
+
+    <main id="main-container">
+        <div class="container-instrucao">
+            <div class="caixa-dialogo"><p id="texto-instrucao"></p></div>
+        </div>
+        <div id="hotspots-container"></div>
+        <audio id="musica-fundo" loop><source id="audio-source" src="" type="audio/mpeg"></audio>
+    </main>
+
+    <div class="modal fade" id="mensagemModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"><div class="modal-content text-center"><div class="modal-body p-5"><p id="texto-mensagem" class="fs-3 fw-bold"></p><button type="button" class="btn btn-primary mt-3 rounded-pill px-5 fw-bold" data-bs-dismiss="modal">PRÓXIMO!</button></div></div></div>
+    </div>
+    <div class="modal fade" id="modalFinal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content final-vintage text-center"><div class="modal-body p-5"><h2 class="mb-4 display-5 fw-bold">Feliz Dia das Mulheres! 🌹</h2><div id="texto-final"></div><button type="button" class="btn btn-danger mt-4 rounded-pill px-5 fw-bold" data-bs-dismiss="modal">COM CARINHO ❤️</button></div></div></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
