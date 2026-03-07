@@ -1,13 +1,13 @@
 /* --- CONFIGURAÇÕES BASE --- */
 body, html { 
     height: 100%; margin: 0; padding: 0; 
-    overflow-x: hidden; overflow-y: auto !important; 
+    overflow-x: hidden; 
+    overflow-y: auto !important; /* HABILITA ROLAGEM */
     font-family: 'Nunito', sans-serif; background-color: #000; 
 }
 
 #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; background: rgba(0, 0, 0, 0.75); }
 .z-index-top { z-index: 2005; position: relative; }
-
 #main-container { min-height: 100vh; width: 100vw; background-size: cover; background-position: center; position: relative; }
 .container-instrucao, #hotspots-container { display: none; }
 
@@ -22,8 +22,13 @@ body, html {
 .caixa-dialogo { background-size: 100% 100%; background-repeat: no-repeat; width: 100%; height: 160px; display: flex; align-items: center; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3)); }
 #texto-instrucao { font-size: 1.1rem; font-weight: 900; margin: 0; padding: 10px 20px; border-radius: 15px; }
 
+/* --- COMPONENTES INTERATIVOS --- */
+.hotspot { position: absolute; transform: translate(-50%, -50%); z-index: 100; }
+.popped { animation: pop-out 0.4s forwards !important; pointer-events: none !important; }
+@keyframes pop-out { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; visibility: hidden; } }
+
 /* =========================================
-   TEMA BEATRIIX (BLOONS)
+   ESTILO BEATRIIX (Bea)
    ========================================= */
 .tema-bea #boas-vindas { font-family: 'Luckiest Guy', cursive; text-shadow: 3px 3px 0 #000; }
 .tema-bea #niko-img { position: absolute; right: 3%; top: 50%; transform: translateY(-50%); max-width: 400px; z-index: 2001; pointer-events: none; filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.4)); }
@@ -32,56 +37,76 @@ body, html {
 .tema-bea .hotspot { width: 140px; height: 180px; display: flex; flex-direction: column; align-items: center; }
 .tema-bea .monkey-img { width: 110px; height: 110px; background-image: url('../assets/images/macaquinho.gif'); background-size: contain; background-repeat: no-repeat; margin-bottom: -30px; z-index: 1; animation: bounceBea 2s infinite; }
 .tema-bea .balloon-img { width: 90px; height: 90px; background-image: url('../assets/images/bloon.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; z-index: 10; filter: drop-shadow(0 5px 15px rgba(255,0,0,0.3)); }
+/* Modais Bea */
+.tema-bea .modal-content { border: 6px solid #4e342e; border-radius: 20px; background: #fff; }
+.tema-bea .btn-theme { background-color: #4e342e; color: #fff; border: none; }
+.tema-bea .final-homenagem { background-color: #fdf6e3; border: 12px double #4e342e; color: #2c1b18; }
 @keyframes bounceBea { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
 /* =========================================
-   TEMA JENNIFER (GÓTICO)
+   ESTILO JENNIFER
    ========================================= */
 .tema-jennifer .caixa-dialogo { background-image: url('../assets/images/caixaj.png'); padding: 0 60px; justify-content: center; text-align: center; }
 .tema-jennifer #texto-instrucao { color: #b03a5b; background: rgba(255, 230, 240, 0.9); border: 3px solid #ff85a1; }
-.tema-jennifer .default-dot { width: 65px; height: 65px; background-color: #000; mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'); -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; cursor: pointer; filter: drop-shadow(0 0 8px #ff85a1); }
+.tema-jennifer .default-dot { 
+    width: 65px; height: 65px; background-color: #000;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; cursor: pointer; filter: drop-shadow(0 0 8px #ff85a1); 
+}
+/* Modais Jennifer */
+.tema-jennifer .modal-content { border: 6px solid #ff85a1; border-radius: 0; background: #000; color: #ff85a1; }
+.tema-jennifer .btn-theme { background-color: #ff85a1; color: #000; border: none; }
+.tema-jennifer .final-homenagem { background-color: #1a1a1a; border: 8px double #ff85a1; color: #fff; box-shadow: 15px 15px 0px #ff85a1; }
 
 /* =========================================
-   TEMA CIRSA / ISLANE / IRANI (DEMAIS)
+   ESTILO CIRSA
    ========================================= */
 .tema-cirsa .caixa-dialogo { background-image: none !important; background: #fff8e1; border: 4px solid #d4af37; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; }
-.tema-islane .caixa-dialogo { background-image: none !important; background: #5d4037; border: 4px solid #ff9800; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; }
-.tema-irani .caixa-dialogo { background-image: none !important; background: #fce4ec; border: 4px solid #e91e63; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; }
-
-/* Ícones correspondentes */
+.tema-cirsa #texto-instrucao { color: #5d4037; background: transparent; }
 .tema-cirsa .bible-dot { width: 90px; height: 90px; background-image: url('../assets/images/biblia.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; }
+/* Modais Cirsa */
+.tema-cirsa .modal-content { border: 5px solid #d4af37; border-radius: 15px; background: #fffaf0; color: #5d4037; }
+.tema-cirsa .btn-theme { background-color: #d4af37; color: #fff; border: none; }
+.tema-cirsa .final-homenagem { background-color: #fffaf0; border: 10px double #d4af37; color: #5d4037; }
+
+/* =========================================
+   ESTILO ISLANE / IRANI
+   ========================================= */
+.tema-islane .caixa-dialogo { background-image: none !important; background: #5d4037; border: 4px solid #ff9800; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; }
+.tema-islane #texto-instrucao { color: #fff; background: transparent; }
 .tema-islane .africa-dot { width: 90px; height: 90px; background-image: url('../assets/images/africa.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; }
+.tema-islane .modal-content { border: 6px solid #ff9800; background: #fff3e0; color: #5d4037; }
+.tema-islane .btn-theme { background-color: #ff9800; color: #fff; }
+.tema-islane .final-homenagem { background-color: #5d4037; border: 10px double #ff9800; color: #fff; }
+
+.tema-irani .caixa-dialogo { background-image: none !important; background: #fce4ec; border: 4px solid #e91e63; border-radius: 20px; height: auto; min-height: 80px; padding: 15px; justify-content: center; }
+.tema-irani #texto-instrucao { color: #880e4f; background: transparent; }
 .tema-irani .pan-dot { width: 100px; height: 100px; background-image: url('../assets/images/panela.png'); background-size: contain; background-repeat: no-repeat; cursor: pointer; }
+.tema-irani .modal-content { border: 5px solid #e91e63; border-radius: 15px; background: #fff; color: #880e4f; }
+.tema-irani .btn-theme { background-color: #e91e63; color: #fff; }
+.tema-irani .final-homenagem { background-color: #fce4ec; border: 10px double #e91e63; color: #880e4f; }
 
-/* --- HOTSPOTS E ANIMAÇÕES --- */
-.hotspot { position: absolute; transform: translate(-50%, -50%); z-index: 100; }
-.popped { animation: pop-out 0.4s forwards !important; pointer-events: none !important; }
-@keyframes pop-out { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; visibility: hidden; } }
-
-/* --- MODAIS --- */
-.final-vintage { background-color: #fdf6e3; border: 8px double #4e342e; color: #2c1b18; }
+/* --- TEXTO FINAL GERAL --- */
 #texto-final { font-size: 1.1rem; font-style: italic; white-space: pre-wrap; text-align: left; padding: 10px; line-height: 1.6; max-height: 60vh; overflow-y: auto; }
 
 /* =========================================
-   AJUSTES MOBILE (QUANDO NA HORIZONTAL)
+   AJUSTES MOBILE (HORIZONTAL)
    ========================================= */
 @media (max-width: 900px) {
     .game-font { font-size: 1.8rem !important; }
-    
-    /* Niko Bea Mobile */
     .tema-bea #niko-img { max-width: 170px !important; right: 0; top: 60%; }
     
-    /* Caixas de Diálogo Mobile (Ajuste de Padding para não quebrar estilo) */
     .caixa-dialogo { height: auto !important; min-height: 70px !important; }
-    .tema-bea .caixa-dialogo { padding: 5px 15px 5px 100px !important; } /* Mantém espaço pro macaco da foto */
+    .tema-bea .caixa-dialogo { padding: 5px 15px 5px 100px !important; }
     .tema-jennifer .caixa-dialogo { padding: 5px 30px !important; }
     .tema-cirsa .caixa-dialogo, .tema-islane .caixa-dialogo, .tema-irani .caixa-dialogo { padding: 10px !important; }
     
-    #texto-instrucao { font-size: 0.75rem !important; padding: 5px 10px !important; }
-
-    /* Redução de tamanho dos botões de clique */
+    #texto-instrucao { font-size: 0.8rem !important; padding: 5px 10px !important; }
     .hotspot { scale: 0.7; }
     
-    /* Texto Modal Final */
-    #texto-final { font-size: 0.85rem !important; line-height: 1.4; }
+    /* MODAL MOBILE: Evita cortar texto */
+    .modal-dialog { margin: 10px auto; width: 90%; max-width: 400px; }
+    .modal-body { padding: 20px !important; }
+    #texto-mensagem { font-size: 1.1rem !important; }
 }
