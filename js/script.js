@@ -13,7 +13,7 @@ const dadosMulheres = {
         pontos: [
             { x: "22%", y: "45%", msg: "Continua sempre me informando de eventos culturais 🐵🎈" },
             { x: "50%", y: "80%", msg: "Não deixe de me recomendar livros, albuns e lugares incriveis ❤️" },
-            { x: "82%", y: "40%", msg: "E deixe de besteira macho, comprar um pastel, um açai ou qualquer bobagem nao é nada para se ter perto a companhia dos amigos....e... eu vou estar providenciando meu óculos 🕶️✨" }
+            { x: "82%", y: "40%", msg: "E deixe de besteira macho, comprar um pastel, um açai, uma pipoca ou energético que seja...ou qualquer bobagem nao é nada para se ter perto a companhia dos amigos....e... eu vou estar providenciando meu óculos 🕶️✨" }
         ]
     },
     "jennifer": {
